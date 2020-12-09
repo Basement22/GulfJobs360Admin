@@ -4,7 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default class Index extends Component {
   componentDidMount = () => {
-    Router.push("/admin/dashboard");
+    Router.push("/auth/login");
   };
 
   render() {

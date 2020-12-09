@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 
 // reactstrap components
 import {
@@ -24,7 +25,7 @@ class Login extends React.Component {
       <>
         <Col lg="5" md="7">
           <Card className="bg-secondary shadow border-0">
-            <CardHeader className="bg-transparent pb-5">
+            {/* <CardHeader className="bg-transparent pb-5">
               <div className="text-muted text-center mt-2 mb-3">
                 <small>Sign in with</small>
               </div>
@@ -58,10 +59,14 @@ class Login extends React.Component {
                   <span className="btn-inner--text">Google</span>
                 </Button>
               </div>
-            </CardHeader>
+            </CardHeader> */}
             <CardBody className="px-lg-5 py-lg-5">
               <div className="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <img
+                  alt="Sorry!"
+                  src={require("assets/img/brand/gulfblacklogo.png")}
+                />
+                <h3 className='text-dark mt-4' >Sign in</h3>
               </div>
               <Form role="form">
                 <FormGroup className="mb-3">
@@ -92,7 +97,7 @@ class Login extends React.Component {
                     />
                   </InputGroup>
                 </FormGroup>
-                <div className="custom-control custom-control-alternative custom-checkbox">
+                <div className="custom-control custom-control-alternative custom-checkbox" >
                   <input
                     className="custom-control-input"
                     id=" customCheckLogin"
@@ -101,19 +106,33 @@ class Login extends React.Component {
                   <label
                     className="custom-control-label"
                     htmlFor=" customCheckLogin"
+                    style={{ float: 'left' }}
                   >
                     <span className="text-muted">Remember me</span>
                   </label>
                 </div>
-                <div className="text-center">
-                  <Button className="my-4" color="primary" type="button">
-                    Sign in
-                  </Button>
+                <div className="text-center" style={{ margin: '20px 0px' }} >
+                  <Link href="/admin/dashboard" >
+                    <Button className="btn btn-primary btn-lg btn-block" color="primary" fullWidth type="button">
+                      Sign in
+                    </Button>
+                  </Link>
                 </div>
+                <Col xs="12" >
+                  <div className='text-center' >
+                    <a
+                      className="text-dark"
+                      href="#pablo"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <small>Forgot password?</small>
+                    </a>
+                  </div>
+                </Col>
               </Form>
             </CardBody>
           </Card>
-          <Row className="mt-3">
+          {/* <Row className="mt-3">
             <Col xs="6">
               <a
                 className="text-light"
@@ -122,8 +141,8 @@ class Login extends React.Component {
               >
                 <small>Forgot password?</small>
               </a>
-            </Col>
-            <Col className="text-right" xs="6">
+            </Col> */}
+          {/* <Col className="text-right" xs="6">
               <a
                 className="text-light"
                 href="#pablo"
@@ -131,8 +150,8 @@ class Login extends React.Component {
               >
                 <small>Create new account</small>
               </a>
-            </Col>
-          </Row>
+            </Col> */}
+          {/* </Row> */}
         </Col>
       </>
     );

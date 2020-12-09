@@ -38,6 +38,66 @@ import {
 
 var ps;
 
+const CreateLinks = ({ routes, activeRoute, closeCollapse, toggleCollapse }, key) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+  // const toggle = () => setIsOpen(
+  //   console.log(`First Boolean ${!isOpen} then Key ${key.json}`)
+  // );
+
+return routes.map((prop, key) => (
+  prop.collapse ? (
+    <>
+      <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
+        <Link href={prop.layout + prop.path}>
+          <NavLink
+            href="#pablo"
+            active={activeRoute(prop.layout + prop.path)}
+            onClick={toggle}
+          >
+            <i className={prop.icon} />
+            {prop.name}
+          </NavLink>
+        </Link>
+      </NavItem>
+      {/* <Button onClick={toggle} style={{ marginBottom: '1rem', boxShadow: 'none' }}>{prop.name}</Button> */}
+      <Collapse isOpen={isOpen}>
+        {prop.views.map(view => (
+          <NavItem key={key} style={{ backgroundColor: '#EEEEEE' }} active={activeRoute(view.layout + view.path)}>
+            <Link href={view.layout + view.path}>
+              <NavLink
+                href="#pablo"
+                active={activeRoute(view.layout + view.path)}
+                onClick={closeCollapse}
+              >
+                <i className={view.icon} />
+                {view.name}
+              </NavLink>
+            </Link>
+          </NavItem>
+        ))}
+
+      </Collapse>
+    </>
+  ) : (
+      <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
+        <Link href={prop.layout + prop.path}>
+          <NavLink
+            href="#pablo"
+            active={activeRoute(prop.layout + prop.path)}
+            onClick={closeCollapse}
+          >
+            <i className={prop.icon} />
+            {prop.name}
+          </NavLink>
+        </Link>
+      </NavItem>
+    )
+)
+);
+};
+
 function Sidebar(props) {
   // used for checking current route
   const router = useRouter();
@@ -55,24 +115,6 @@ function Sidebar(props) {
     setCollapseOpen(false);
   };
   // creates the links that appear in the left menu / Sidebar
-  const createLinks = (routes) => {
-    return routes.map((prop, key) => {
-      return (
-        <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
-          <Link href={prop.layout + prop.path}>
-            <NavLink
-              href="#pablo"
-              active={activeRoute(prop.layout + prop.path)}
-              onClick={closeCollapse}
-            >
-              <i className={prop.icon} />
-              {prop.name}
-            </NavLink>
-          </Link>
-        </NavItem>
-      );
-    });
-  };
 
   const { routes, logo } = props;
   let navbarBrand = (
@@ -217,13 +259,13 @@ function Sidebar(props) {
             </InputGroup>
           </Form>
           {/* Navigation */}
-          <Nav navbar>{createLinks(routes)}</Nav>
+          <Nav navbar><CreateLinks routes={routes} activeRoute={activeRoute} closeCollapse={closeCollapse} toggleCollapse={toggleCollapse} /></Nav>
           {/* Divider */}
-          <hr className="my-3" />
+          {/* <hr className="my-3" /> */}
           {/* Heading */}
-          <h6 className="navbar-heading text-muted">Documentation</h6>
+          {/* <h6 className="navbar-heading text-muted">Documentation</h6> */}
           {/* Navigation */}
-          <Nav className="mb-md-3" navbar>
+          {/* <Nav className="mb-md-3" navbar>
             <NavItem>
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
                 <i className="ni ni-spaceship" />
@@ -242,7 +284,7 @@ function Sidebar(props) {
                 Components
               </NavLink>
             </NavItem>
-          </Nav>
+          </Nav> */}
 
         </Collapse>
       </Container>

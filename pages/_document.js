@@ -10,12 +10,12 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#000000" />
           <link
             rel="shortcut icon"
-            href={require("assets/img/brand/favicon.ico")}
+            href={require("assets/img/brand/gulf-favicon.png")}
           />
           <link
             rel="apple-touch-icon"
             sizes="76x76"
-            href={require("assets/img/brand/apple-icon.png")}
+            href={require("assets/img/brand/gulf-favicon.png")}
           />
           {/* Fonts and icons */}
           <link
