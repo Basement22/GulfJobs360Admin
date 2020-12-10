@@ -13,7 +13,7 @@ import {
 const TableActionBar = () => {
     return (
         <Row className="my-2">
-            <Col lg="8" md="8" sm="12" xs="12">
+            <Col lg="12" md="12" sm="12" xs="12">
                 <FormGroup>
                     <InputGroup className=" mb-3">
                         <Input
@@ -36,7 +36,7 @@ const TableActionBar = () => {
 
                 </FormGroup>
             </Col>
-            <Col lg="4" md="4" sm="4" xs="4">
+            {/* <Col lg="4" md="4" sm="4" xs="4">
                 <Button color="danger" size="md">
                     <i className="far fa-trash-alt mr-1"></i>
                     delete
@@ -45,7 +45,7 @@ const TableActionBar = () => {
                     <i className="fas fa-pencil-alt mr-1"></i>
                     update
                 </Button>
-            </Col>
+            </Col> */}
         </Row >
     )
 }

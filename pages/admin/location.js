@@ -65,7 +65,10 @@ const data = [
 ]
 
 
-const Admins = () => {
+const Location = ( props ) => {
+
+    console.log(props.posts)
+
     return (
         <>
             <SimpleHeader />
@@ -97,6 +100,20 @@ const Admins = () => {
     )
 }
 
-Admins.layout = Admin;
+export async function getStaticProps() {
+    // You can use any data fetching library
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/')
+    const posts = await res.json()
 
-export default Admins; 
+    // By returning { props: posts }, the Blog component
+    // will receive `posts` as a prop at build time
+    return {
+        props: {
+            posts,       
+        },
+    }
+}
+
+Location.layout = Admin;
+
+export default Location; 

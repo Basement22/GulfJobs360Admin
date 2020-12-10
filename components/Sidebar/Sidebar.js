@@ -39,63 +39,60 @@ import {
 var ps;
 
 const CreateLinks = ({ routes, activeRoute, closeCollapse, toggleCollapse }, key) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState('Dashboard');
 
-  const toggle = () => setIsOpen(!isOpen);
-  // const toggle = () => setIsOpen(
-  //   console.log(`First Boolean ${!isOpen} then Key ${key.json}`)
-  // );
+  const toggle = (activeName) => setIsOpen(activeName)
 
-return routes.map((prop, key) => (
-  prop.collapse ? (
-    <>
-      <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
-        <Link href={prop.layout + prop.path}>
-          <NavLink
-            href="#pablo"
-            active={activeRoute(prop.layout + prop.path)}
-            onClick={toggle}
-          >
-            <i className={prop.icon} />
-            {prop.name}
-          </NavLink>
-        </Link>
-      </NavItem>
-      {/* <Button onClick={toggle} style={{ marginBottom: '1rem', boxShadow: 'none' }}>{prop.name}</Button> */}
-      <Collapse isOpen={isOpen}>
-        {prop.views.map(view => (
-          <NavItem key={key} style={{ backgroundColor: '#EEEEEE' }} active={activeRoute(view.layout + view.path)}>
-            <Link href={view.layout + view.path}>
-              <NavLink
-                href="#pablo"
-                active={activeRoute(view.layout + view.path)}
-                onClick={closeCollapse}
-              >
-                <i className={view.icon} />
-                {view.name}
-              </NavLink>
-            </Link>
-          </NavItem>
-        ))}
+  return routes.map((prop, key) => (
+    prop.collapse ? (
+      <>
+        <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
+          <Link href={prop.layout + prop.path}>
+            <NavLink
+              href="#pablo"
+              active={activeRoute(prop.layout + prop.path)}
+              onClick={() => toggle(prop.name)}
+            >
+              <i className={prop.icon} />
+              {prop.name}
+            </NavLink>
+          </Link>
+        </NavItem>
+        {/* <Button onClick={toggle} style={{ marginBottom: '1rem', boxShadow: 'none' }}>{prop.name}</Button> */}
+        <Collapse isOpen={prop.name === isOpen}>
+          {prop.views.map(view => (
+            <NavItem key={key} style={{ backgroundColor: '#EEEEEE' }} active={activeRoute(view.layout + view.path)}>
+              <Link href={view.layout + view.path}>
+                <NavLink
+                  href="#pablo"
+                  active={activeRoute(view.layout + view.path)}
+                  onClick={closeCollapse}
+                >
+                  <i className={view.icon} />
+                  {view.name}
+                </NavLink>
+              </Link>
+            </NavItem>
+          ))}
 
-      </Collapse>
-    </>
-  ) : (
-      <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
-        <Link href={prop.layout + prop.path}>
-          <NavLink
-            href="#pablo"
-            active={activeRoute(prop.layout + prop.path)}
-            onClick={closeCollapse}
-          >
-            <i className={prop.icon} />
-            {prop.name}
-          </NavLink>
-        </Link>
-      </NavItem>
-    )
-)
-);
+        </Collapse>
+      </>
+    ) : (
+        <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
+          <Link href={prop.layout + prop.path}>
+            <NavLink
+              href="#pablo"
+              active={activeRoute(prop.layout + prop.path)}
+              onClick={closeCollapse}
+            >
+              <i className={prop.icon} />
+              {prop.name}
+            </NavLink>
+          </Link>
+        </NavItem>
+      )
+  )
+  );
 };
 
 function Sidebar(props) {

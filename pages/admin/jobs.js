@@ -1,3 +1,4 @@
+
 import Admin from "../../layouts/Admin";
 import {
     Container,
@@ -65,7 +66,10 @@ const data = [
 ]
 
 
-const Admins = () => {
+const Jobs = (props) => {
+
+    console.log(props.posts)
+    
     return (
         <>
             <SimpleHeader />
@@ -97,6 +101,19 @@ const Admins = () => {
     )
 }
 
-Admins.layout = Admin;
+export async function getStaticProps() {
+    // You can use any data fetching library
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/')
+    const posts = await res.json()
 
-export default Admins; 
+    return {
+        props: {
+            posts,
+        },
+    }
+}
+
+
+Jobs.layout = Admin;
+
+export default Jobs; 

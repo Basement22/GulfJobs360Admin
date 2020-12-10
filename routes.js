@@ -1,16 +1,20 @@
 var routes = [
   {
+    collapse: true,
     path: "/dashboard",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     layout: "/admin",
+    views: [],
     subLinks: null
   },
   {
+    collapse: true,
     path: "/stats",
     name: "Statistics",
     icon: "ni ni-chart-bar-32 text-teal",
     layout: "/admin",
+    views: []
   },
   {
     collapse: true,
@@ -48,13 +52,13 @@ var routes = [
     layout: "/admin",
     views: [
       {
-        path: "/users",
+        path: "/admins",
         name: "All Admins",
         icon: "fas fa-user-shield",
         layout: "/admin",
       },
       {
-        path: "/candidates",
+        path: "/admins",
         name: "Create New",
         icon: "far fa-plus-square",
         layout: "/admin",
@@ -90,7 +94,7 @@ var routes = [
     layout: "/admin",
     views: [
       {
-        path: "/users",
+        path: "/location",
         name: "All Locations",
         icon: "ni ni-pin-3",
         layout: "/admin",
@@ -104,10 +108,12 @@ var routes = [
     ],
   },
   {
+    collapse: true,
     path: "/jobs",
     name: "Jobs",
     icon: "fas fa-briefcase text-pink",
     layout: "/admin",
+    views: []
   },
   {
     collapse: true,
