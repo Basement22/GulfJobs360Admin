@@ -2,14 +2,19 @@ import {
     Table,
     FormGroup,
     Label,
+    Button,
     Input
 } from 'reactstrap';
 
 
 
-const AdminTable = ({ data }) => {
+const AdminTable = ({ posts }) => {
+    // if (loading) {
+    //     return <h2>Loading...</h2>;
+    // }
+
     return (
-        <Table responsive className=" align-items-center">
+        <Table responsive striped className="align-items-center">
             <thead className=" thead-light" >
                 <tr>
                     <th scope="col" >
@@ -27,13 +32,19 @@ const AdminTable = ({ data }) => {
                         Title
                     </th>
                     <th className="sort" data-sort="completed" scope="col">
-                        Active
+                        Completed
+                    </th>
+                    <th className="sort" data-sort="completed" scope="col">
+
+                    </th>
+                    <th className="sort" data-sort="completed" scope="col">
+
                     </th>
                 </tr>
             </thead>
             <tbody className="list">
 
-                {data.map(d => (
+                {posts.map(d => (
                     <tr key={d.id}>
                         <th className="sort" data-sort="id" scope="col">
                             <div className=" custom-control custom-checkbox mb-2">
@@ -50,11 +61,16 @@ const AdminTable = ({ data }) => {
                             {d.title}
                         </td>
                         <td>
-                            {d.completed}
+                            Yes
+                        </td>
+                        <td>
+                            <Button outline color="primary" size="sm" ><i class="fas fa-pencil-alt"></i></Button>
+                        </td>
+                        <td>
+                            <Button outline color="danger" size="sm" ><i class="fas fa-trash-alt"></i></Button>
                         </td>
                     </tr>
                 ))}
-
 
             </tbody>
         </Table>

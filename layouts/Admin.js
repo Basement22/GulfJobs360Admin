@@ -41,7 +41,6 @@ function Admin(props) {
         <AdminNavbar {...props} brandText={getBrandText()} />
         {props.children}
         <Container fluid>
-          <AdminFooter />
         </Container>
       </div>
     </>

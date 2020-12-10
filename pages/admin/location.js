@@ -8,66 +8,22 @@ import {
 
 import SimpleHeader from "components/Headers/SimpleHeader.js";
 import AddAdminModal from "components/Admins/AddAdminModal";
-import AdminTable from "components/Admins/AdminTable";
+import JobsTable from "components/Jobs/JobsTable";
 import TableActionBar from "components/Admins/TableActionBar";
-import AdminTablePagination from "components/Admins/AdminTablePagination";
+import JobsTablePagination from "components/Jobs/JobsTablePagination";
 
-const data = [
-    {
-        id: '1',
-        name: 'John Doe',
-        email: 'johndoe@email.com',
-        gender: 'male',
-        active: '1 hr ago'
-    },
-    {
-        id: '2',
-        name: 'Jane Doe',
-        email: 'janedoe@email.com',
-        gender: 'female',
-        active: '1 hr ago'
-    },
-    {
-        id: '3',
-        name: 'Jane Doe',
-        email: 'janedoe@email.com',
-        gender: 'female',
-        active: '1 hr ago'
-    },
-    {
-        id: '4',
-        name: 'Jane Doe',
-        email: 'janedoe@email.com',
-        gender: 'female',
-        active: '1 hr ago'
-    },
-    {
-        id: '5',
-        name: 'Jane Doe',
-        email: 'janedoe@email.com',
-        gender: 'female',
-        active: '1 hr ago'
-    },
-    {
-        id: '6',
-        name: 'Jane Doe',
-        email: 'janedoe@email.com',
-        gender: 'female',
-        active: '1 hr ago'
-    },
-    {
-        id: '7',
-        name: 'Jane Doe',
-        email: 'janedoe@email.com',
-        gender: 'female',
-        active: '1 hr ago'
-    },
-]
-
-
-const Location = ( props ) => {
+const Location = (props) => {
 
     console.log(props.posts)
+
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const [postsPerPage] = React.useState(10);
+
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = props.posts.slice(indexOfFirstPost, indexOfLastPost);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <>
@@ -77,7 +33,7 @@ const Location = ( props ) => {
                 <Row>
                     <Col className="mb-5 mb-xl-0" xl="8">
                         <div>
-                            <h1 style={{ display: 'inline-block' }} className="mr-1"> Admins </h1>
+                            <h1 style={{ display: 'inline-block' }} className="mr-1"> Locations </h1>
                             <AddAdminModal />
                         </div>
                     </Col>
@@ -88,10 +44,10 @@ const Location = ( props ) => {
                     </Col>
 
                     <Col lg="12" md="12" sm="12" xs="12">
-                        <AdminTable data={data} />
+                        <JobsTable posts={currentPosts} />,
                     </Col>
                     <Col lg="12" md="12" sm="12" xs="12" className="align-item-center">
-                        <AdminTablePagination data={data} />
+                        <JobsTablePagination postsPerPage={postsPerPage} totalPosts={props.posts.length} paginate={paginate} />
                     </Col>
                 </Row>
 
@@ -101,15 +57,19 @@ const Location = ( props ) => {
 }
 
 export async function getStaticProps() {
+
+    // const [loading, setLoading] = React.useState(false);
+    // setLoading(true);
     // You can use any data fetching library
     const res = await fetch('https://jsonplaceholder.typicode.com/todos/')
     const posts = await res.json()
+    // setLoading(false);
 
     // By returning { props: posts }, the Blog component
     // will receive `posts` as a prop at build time
     return {
         props: {
-            posts,       
+            posts,
         },
     }
 }
