@@ -8,7 +8,7 @@ import {
 
 
 
-const JobsTable = ({ posts }) => {
+const AdminTable = ({ posts }) => {
     // if (loading) {
     //     return <h2>Loading...</h2>;
     // }
@@ -25,14 +25,14 @@ const JobsTable = ({ posts }) => {
                     <th className="sort" data-sort="id" scope="col">
                         Id
                     </th>
-                    <th className="sort" data-sort="name" scope="col">
-                        Name
+                    <th className="sort" data-sort="userId" scope="col">
+                        User_Id
                     </th>
-                    <th className="sort" data-sort="description" scope="col">
-                        Description
+                    <th className="sort" data-sort="title" scope="col">
+                        Title
                     </th>
-                    <th className="sort" data-sort="status" scope="col">
-                        Status
+                    <th className="sort" data-sort="completed" scope="col">
+                        Completed
                     </th>
                     <th className="sort" data-sort="completed" scope="col">
 
@@ -46,22 +46,22 @@ const JobsTable = ({ posts }) => {
 
                 {posts.map(d => (
                     <tr key={d.id}>
-                        <td className="sort" data-sort="id" scope="col">
+                        <th className="sort" data-sort="id" scope="col">
                             <div className=" custom-control custom-checkbox mb-2">
                                 <Input type="checkbox" />
                             </div>
-                        </td>
-                        <td scope="row">
+                        </th>
+                        <th scope="row">
                             {d.id}
+                        </th>
+                        <td>
+                            {d.userId}
                         </td>
                         <td>
-                            {d.name}
+                            {d.title}
                         </td>
                         <td>
-                            {d.description}
-                        </td>
-                        <td>
-                            Active
+                            Yes
                         </td>
                         <td>
                             <Button outline color="primary" size="sm" ><i class="fas fa-pencil-alt"></i></Button>
@@ -77,4 +77,4 @@ const JobsTable = ({ posts }) => {
     )
 }
 
-export default JobsTable; 
+export default AdminTable; 

@@ -9,11 +9,11 @@ import {
 
 import SimpleHeader from "components/Headers/SimpleHeader.js";
 import AddAdminModal from "components/Admins/AddAdminModal";
-import JobsTable from "components/Jobs/JobsTable";
+import FaqsCategoriesTable from "components/FaqsCategories/FaqsCategoriesTable";
 import TableActionBar from "components/Admins/TableActionBar";
-import JobsTablePagination from "components/Jobs/JobsTablePagination";
+import FaqsCategoriesTablePagination from "components/FaqsCategories/FaqsCategoriesTablePagination";
 
-const Jobs = (props) => {
+const FaqsCategories = (props) => {
 
     console.log(props.posts.success)
 
@@ -36,7 +36,7 @@ const Jobs = (props) => {
                 <Row>
                     <Col className="mb-5 mb-xl-0" xl="8">
                         <div>
-                            <h1 style={{ display: 'inline-block' }} className="mr-1"> Jobs Categories </h1>
+                            <h1 style={{ display: 'inline-block' }} className="mr-1"> FAQs Categories </h1>
                             <AddAdminModal />
                         </div>
                     </Col>
@@ -47,10 +47,10 @@ const Jobs = (props) => {
                     </Col>
 
                     <Col lg="12" md="12" sm="12" xs="12">
-                        <JobsTable posts={props.posts.success} />
+                        <FaqsCategoriesTable posts={props.posts.success} />
                     </Col>
                     <Col lg="12" md="12" sm="12" xs="12" className="align-item-center">
-                        <JobsTablePagination postsPerPage={postsPerPage} totalPosts={props.posts.length} paginate={paginate} />
+                        <FaqsCategoriesTablePagination postsPerPage={postsPerPage} totalPosts={props.posts.length} paginate={paginate} />
                     </Col>
                 </Row>
 
@@ -61,7 +61,7 @@ const Jobs = (props) => {
 
 export async function getStaticProps() {
     // You can use any data fetching library
-    const res = await fetch('http://www.gulfjob360.namistech.com/jobcategory')
+    const res = await fetch('http://www.gulfjob360.namistech.com/faq-category')
     const posts = await res.json()
 
     return {
@@ -72,6 +72,6 @@ export async function getStaticProps() {
 }
 
 
-Jobs.layout = Admin;
+FaqsCategories.layout = Admin;
 
-export default Jobs; 
+export default FaqsCategories; 

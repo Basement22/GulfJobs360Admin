@@ -8,7 +8,7 @@ import {
 
 
 
-const JobsTable = ({ posts }) => {
+const FaqsTable = ({ posts }) => {
     // if (loading) {
     //     return <h2>Loading...</h2>;
     // }
@@ -77,4 +77,4 @@ const JobsTable = ({ posts }) => {
     )
 }
 
-export default JobsTable; 
+export default FaqsTable; 

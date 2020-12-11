@@ -3,7 +3,7 @@ import React from "react";
 // reactstrap components
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 
-function locationTablePagination({ postsPerPage, totalPosts, paginate }) {
+function TipsTablePagination({ postsPerPage, totalPosts, paginate }) {
 
     const pageNumbers = [];
 
@@ -63,6 +63,6 @@ function locationTablePagination({ postsPerPage, totalPosts, paginate }) {
     );
 }
 
-export default locationTablePagination;
+export default TipsTablePagination;
 
 

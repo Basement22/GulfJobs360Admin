@@ -36,7 +36,7 @@ const Jobs = (props) => {
                 <Row>
                     <Col className="mb-5 mb-xl-0" xl="8">
                         <div>
-                            <h1 style={{ display: 'inline-block' }} className="mr-1"> Jobs Categories </h1>
+                            <h1 style={{ display: 'inline-block' }} className="mr-1"> All Jobs </h1>
                             <AddAdminModal />
                         </div>
                     </Col>

@@ -7,10 +7,10 @@ import {
 } from 'reactstrap';
 
 import SimpleHeader from "components/Headers/SimpleHeader.js";
-import AddAdminModal from "components/Admins/AddAdminModal";
-import JobsTable from "components/Jobs/JobsTable";
+import AddLocationModal from "components/Locations/AddLocationModal";
+import LocationTable from "components/Locations/LocationTable";
 import TableActionBar from "components/Admins/TableActionBar";
-import JobsTablePagination from "components/Jobs/JobsTablePagination";
+import LocationTablePagination from "components/Locations/LocationTablePagination";
 
 const Location = (props) => {
 
@@ -34,7 +34,7 @@ const Location = (props) => {
                     <Col className="mb-5 mb-xl-0" xl="8">
                         <div>
                             <h1 style={{ display: 'inline-block' }} className="mr-1"> Locations </h1>
-                            <AddAdminModal />
+                            <AddLocationModal />
                         </div>
                     </Col>
                 </Row>
@@ -44,10 +44,10 @@ const Location = (props) => {
                     </Col>
 
                     <Col lg="12" md="12" sm="12" xs="12">
-                        <JobsTable posts={currentPosts} />,
+                        <LocationTable posts={currentPosts} />,
                     </Col>
                     <Col lg="12" md="12" sm="12" xs="12" className="align-item-center">
-                        <JobsTablePagination postsPerPage={postsPerPage} totalPosts={props.posts.length} paginate={paginate} />
+                        <LocationTablePagination postsPerPage={postsPerPage} totalPosts={props.posts.length} paginate={paginate} />
                     </Col>
                 </Row>
 

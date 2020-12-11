@@ -63,7 +63,7 @@ var routes = [
         icon: "far fa-plus-square",
         layout: "/admin",
       },
-    ],    
+    ],
   },
   {
     collapse: true,
@@ -109,11 +109,57 @@ var routes = [
   },
   {
     collapse: true,
-    path: "/jobs",
+    path: "/alljobs",
     name: "Jobs",
     icon: "fas fa-briefcase text-pink",
     layout: "/admin",
-    views: []
+    views: [
+      {
+        path: "/alljobs",
+        name: "All Jobs",
+        icon: "far fa-lightbulb",
+        layout: "/admin",
+      },
+      {
+        path: "/jobs",
+        name: "Jobs Categories",
+        icon: "fab fa-buffer",
+        layout: "/admin",
+      },
+      {
+        path: "/createjob",
+        name: "Create New",
+        icon: "far fa-plus-square",
+        layout: "/admin",
+      },
+    ],
+  },
+  {
+    collapse: true,
+    path: "/tips",
+    name: "Tips",
+    icon: "far fa-lightbulb text-green",
+    layout: "/admin",
+    views: [
+      {
+        path: "/tips",
+        name: "All Tips",
+        icon: "far fa-lightbulb",
+        layout: "/admin",
+      },
+      {
+        path: "/categorytips",
+        name: "Tips Categories",
+        icon: "fab fa-buffer",
+        layout: "/admin",
+      },
+      {
+        path: "/createtips",
+        name: "Create New Tips",
+        icon: "far fa-plus-square",
+        layout: "/admin",
+      },
+    ],
   },
   {
     collapse: true,
@@ -168,8 +214,14 @@ var routes = [
         layout: "/admin",
       },
       {
-        path: "/candidates",
+        path: "/faqs",
         name: "FAQs",
+        icon: "far fa-question-circle",
+        layout: "/admin",
+      },
+      {
+        path: "/categories",
+        name: "FAQs Categories",
         icon: "far fa-question-circle",
         layout: "/admin",
       },
