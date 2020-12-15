@@ -1,0 +1,1 @@
+export const DOMAIN = 'http://www.gulfjob360.namistech.com'

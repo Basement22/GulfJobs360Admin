@@ -1,5 +1,8 @@
 import React from "react";
 import Link from 'next/link';
+import axios from 'axios';
+import { DOMAIN } from "../../Constants"
+import { useRouter } from 'next/router'
 
 // reactstrap components
 import {
@@ -19,8 +22,45 @@ import {
 // layout for this page
 import Auth from "layouts/Auth.js";
 
-class Login extends React.Component {
-  render() {
+function Login () {
+  const router = useRouter()
+  const [ values , setValues ] = React.useState({
+    email : '',
+    password : ''
+  })
+
+
+
+  const handleChange = (e) => { 
+    const { name , value } = e.target 
+    setValues({
+        ...values ,
+        [name] : value 
+    })
+  }
+
+  const handleSubmit = async () => { 
+    // const body = JSON.stringify(values)
+
+    // const res = await fetch('http://www.gulfjob360.namistech.com/admin-login' , {
+    //   body ,
+    //   method : 'POST',
+    //   headers : { 
+    //     'content-type' : 'application/json',
+    //     // "Access-Control-Allow-Origin" : true 
+    //   }
+  
+    // })
+
+    // const data = await res.json();
+
+    const res = await axios.post(`${DOMAIN}/api/admin-login` , values )
+
+    console.log( res.data )
+    router.push('/admin/dashboard')
+  }
+
+
     return (
       <>
         <Col lg="5" md="7">
@@ -79,7 +119,10 @@ class Login extends React.Component {
                     <Input
                       placeholder="Email"
                       type="email"
+                      name ='email'
                       autoComplete="new-email"
+                      value = { values.email }
+                      onChange = { handleChange }
                     />
                   </InputGroup>
                 </FormGroup>
@@ -93,7 +136,10 @@ class Login extends React.Component {
                     <Input
                       placeholder="Password"
                       type="password"
+                      name ='password'
                       autoComplete="new-password"
+                      value = { values.password }
+                      onChange = { handleChange }
                     />
                   </InputGroup>
                 </FormGroup>
@@ -112,11 +158,12 @@ class Login extends React.Component {
                   </label>
                 </div>
                 <div className="text-center" style={{ margin: '20px 0px' }} >
-                  <Link href="/admin/dashboard" >
-                    <Button className="btn btn-primary btn-lg btn-block" color="primary" fullWidth type="button">
+             
+                    <Button className="btn btn-primary btn-lg btn-block" color="primary" type="button" 
+                      onClick = { handleSubmit }
+                    >
                       Sign in
                     </Button>
-                  </Link>
                 </div>
                 <Col xs="12" >
                   <div className='text-center' >
@@ -155,7 +202,6 @@ class Login extends React.Component {
         </Col>
       </>
     );
-  }
 }
 
 Login.layout = Auth;
