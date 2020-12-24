@@ -40,23 +40,23 @@ function Login () {
   }
 
   const handleSubmit = async () => { 
-    // const body = JSON.stringify(values)
+    const body = JSON.stringify(values)
 
-    // const res = await fetch('http://www.gulfjob360.namistech.com/admin-login' , {
-    //   body ,
-    //   method : 'POST',
-    //   headers : { 
-    //     'content-type' : 'application/json',
-    //     // "Access-Control-Allow-Origin" : true 
-    //   }
+    const res = await fetch('http://www.gulfjob360.namistech.com/api/admin-login' , {
+      body ,
+      method : 'POST',
+      headers : { 
+        'content-type' : 'application/json',
+        // "Access-Control-Allow-Origin" : true 
+      }
   
-    // })
+    })
 
-    // const data = await res.json();
+    const data = await res.json();
 
-    const res = await axios.post(`${DOMAIN}/api/admin-login` , values )
+    // const res = await axios.post(`${DOMAIN}/api/admin-login` , values )
 
-    console.log( res.data )
+    // console.log( res.data )
     router.push('/admin/dashboard')
   }
 
