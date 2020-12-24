@@ -127,7 +127,7 @@ var routes = [
         layout: "/admin",
       },
       {
-        path: "/createjob",
+        path: "/add-jobcategory",
         name: "Create New",
         icon: "far fa-plus-square",
         layout: "/admin",

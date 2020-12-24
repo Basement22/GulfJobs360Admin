@@ -9,7 +9,7 @@ import {
 import SimpleHeader from "components/Headers/SimpleHeader.js";
 import AddLocationModal from "components/Locations/AddLocationModal";
 import LocationTable from "components/Locations/LocationTable";
-import TableActionBar from "components/Admins/TableActionBar";
+import SearchTable from "components/Locations/SearchTable";
 import LocationTablePagination from "components/Locations/LocationTablePagination";
 
 const Location = (props) => {
@@ -21,7 +21,7 @@ const Location = (props) => {
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = props.posts.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = props.posts.success.slice(indexOfFirstPost, indexOfLastPost);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -40,7 +40,7 @@ const Location = (props) => {
                 </Row>
                 <Row>
                     <Col lg="12" md="12" sm="12" xs="12">
-                        <TableActionBar />
+                        <SearchTable />
                     </Col>
 
                     <Col lg="12" md="12" sm="12" xs="12">
@@ -61,7 +61,7 @@ export async function getStaticProps() {
     // const [loading, setLoading] = React.useState(false);
     // setLoading(true);
     // You can use any data fetching library
-    const res = await fetch('https://jsonplaceholder.typicode.com/todos/')
+    const res = await fetch('http://www.gulfjob360.namistech.com/api/locations')
     const posts = await res.json()
     // setLoading(false);
 
@@ -76,4 +76,4 @@ export async function getStaticProps() {
 
 Location.layout = Admin;
 
-export default Location; 
+export default Location;

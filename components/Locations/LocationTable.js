@@ -12,6 +12,7 @@ const AdminTable = ({ posts }) => {
     // if (loading) {
     //     return <h2>Loading...</h2>;
     // }
+  
 
     return (
         <Table responsive striped className="align-items-center">
@@ -25,17 +26,17 @@ const AdminTable = ({ posts }) => {
                     <th className="sort" data-sort="id" scope="col">
                         Id
                     </th>
-                    <th className="sort" data-sort="userId" scope="col">
-                        User_Id
+                    <th className="sort" data-sort="locationName" scope="col">
+                        Location_Name
                     </th>
-                    <th className="sort" data-sort="title" scope="col">
-                        Title
+                    <th className="sort" data-sort="code" scope="col">
+                        Code
                     </th>
-                    <th className="sort" data-sort="completed" scope="col">
-                        Completed
+                    <th className="sort" data-sort="createdBy" scope="col">
+                        Created_By
                     </th>
-                    <th className="sort" data-sort="completed" scope="col">
-
+                    <th className="sort" data-sort="status" scope="col">
+                        Status
                     </th>
                     <th className="sort" data-sort="completed" scope="col">
 
@@ -55,10 +56,13 @@ const AdminTable = ({ posts }) => {
                             {d.id}
                         </th>
                         <td>
-                            {d.userId}
+                            {d.location_name}
                         </td>
                         <td>
-                            {d.title}
+                            {d.code}
+                        </td>
+                        <td>
+                            {d.first_name}
                         </td>
                         <td>
                             Yes

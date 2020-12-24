@@ -8,9 +8,9 @@ import {
 } from 'reactstrap';
 
 import SimpleHeader from "components/Headers/SimpleHeader.js";
-import AddAdminModal from "components/Admins/AddAdminModal";
+import AddJobModal from "components/Jobs/AddJobModal";
 import JobsTable from "components/Jobs/JobsTable";
-import TableActionBar from "components/Admins/TableActionBar";
+import TableActionBar from "components/Jobs/TableActionBar";
 import JobsTablePagination from "components/Jobs/JobsTablePagination";
 
 const Jobs = (props) => {
@@ -37,7 +37,7 @@ const Jobs = (props) => {
                     <Col className="mb-5 mb-xl-0" xl="8">
                         <div>
                             <h1 style={{ display: 'inline-block' }} className="mr-1"> Jobs Categories </h1>
-                            <AddAdminModal />
+                            <AddJobModal />
                         </div>
                     </Col>
                 </Row>
@@ -61,7 +61,7 @@ const Jobs = (props) => {
 
 export async function getStaticProps() {
     // You can use any data fetching library
-    const res = await fetch('http://www.gulfjob360.namistech.com/jobcategory')
+    const res = await fetch('http://www.gulfjob360.namistech.com/api/jobcategory')
     const posts = await res.json()
 
     return {

@@ -43,7 +43,6 @@ const JobsTable = ({ posts }) => {
                 </tr>
             </thead>
             <tbody className="list">
-
                 {posts.map(d => (
                     <tr key={d.id}>
                         <td className="sort" data-sort="id" scope="col">

@@ -61,7 +61,7 @@ const Jobs = (props) => {
 
 export async function getStaticProps() {
     // You can use any data fetching library
-    const res = await fetch('http://www.gulfjob360.namistech.com/jobcategory')
+    const res = await fetch('http://www.gulfjob360.namistech.com/api/jobcategory')
     const posts = await res.json()
 
     return {

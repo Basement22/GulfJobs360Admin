@@ -23,7 +23,7 @@ const TableActionBar = () => {
                             type="text"
                         ></Input>
                         <InputGroupAddon addonType="append" className="pr-1">
-                            <Input type="select" onkeyup="searchList()" style={{ borderRadius: 0 }}>
+                            <Input type="select" style={{ borderRadius: 0 }}>
                                 <option>id</option>
                                 <option>name</option>
                                 <option>email</option>
