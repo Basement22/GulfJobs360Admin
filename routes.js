@@ -100,7 +100,7 @@ var routes = [
         layout: "/admin",
       },
       {
-        path: "/candidates",
+        path: "/add-new-location",
         name: "Add New",
         icon: "far fa-plus-square",
         layout: "/admin",
@@ -118,6 +118,12 @@ var routes = [
         path: "/alljobs",
         name: "All Jobs",
         icon: "far fa-lightbulb",
+        layout: "/admin",
+      },
+      {
+        path: "/createjobs",
+        name: "Create New",
+        icon: "far fa-plus-square",
         layout: "/admin",
       },
       {
@@ -148,14 +154,20 @@ var routes = [
         layout: "/admin",
       },
       {
+        path: "/new-tips",
+        name: "Create New Tips",
+        icon: "far fa-plus-square",
+        layout: "/admin",
+      },
+      {
         path: "/categorytips",
         name: "Tips Categories",
         icon: "fab fa-buffer",
         layout: "/admin",
       },
       {
-        path: "/createtips",
-        name: "Create New Tips",
+        path: "/createtips-categories",
+        name: "Create Tips Categories",
         icon: "far fa-plus-square",
         layout: "/admin",
       },
@@ -169,7 +181,7 @@ var routes = [
     layout: "/admin",
     views: [
       {
-        path: "/users",
+        path: "/packages",
         name: "All Packages",
         icon: "fab fa-buffer",
         layout: "/admin",
@@ -181,8 +193,20 @@ var routes = [
         layout: "/admin",
       },
       {
-        path: "/candidates",
+        path: "/newpackage",
         name: "Add New",
+        icon: "far fa-plus-square",
+        layout: "/admin",
+      },
+      {
+        path: "/typepackages",
+        name: "Packages Type",
+        icon: "fab fa-buffer",
+        layout: "/admin",
+      },
+      {
+        path: "/addpackagestype",
+        name: "Add New Type",
         icon: "far fa-plus-square",
         layout: "/admin",
       },
@@ -220,9 +244,21 @@ var routes = [
         layout: "/admin",
       },
       {
+        path: "/add-new-faq",
+        name: "Add New FAQs",
+        icon: "far fa-plus-square",
+        layout: "/admin",
+      },
+      {
         path: "/categories",
         name: "FAQs Categories",
         icon: "far fa-question-circle",
+        layout: "/admin",
+      },
+      {
+        path: "/create-new-faqcategories",
+        name: "Add FAQs Categories",
+        icon: "far fa-plus-square",
         layout: "/admin",
       },
     ],

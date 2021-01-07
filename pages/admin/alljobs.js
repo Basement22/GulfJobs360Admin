@@ -1,4 +1,4 @@
-
+import {DOMAIN} from '../../Constants'
 import Admin from "../../layouts/Admin";
 import {
     Container,
@@ -9,9 +9,9 @@ import {
 
 import SimpleHeader from "components/Headers/SimpleHeader.js";
 import AddAdminModal from "components/Admins/AddAdminModal";
-import JobsTable from "components/Jobs/JobsTable";
+import JobsTable from "components/AllJobs/JobsTable";
 import TableActionBar from "components/Admins/TableActionBar";
-import JobsTablePagination from "components/Jobs/JobsTablePagination";
+import JobsTablePagination from "components/AllJobs/JobsTablePagination";
 
 const Jobs = (props) => {
 
@@ -61,7 +61,7 @@ const Jobs = (props) => {
 
 export async function getStaticProps() {
     // You can use any data fetching library
-    const res = await fetch('http://www.gulfjob360.namistech.com/api/jobcategory')
+    const res = await fetch(`${DOMAIN}/jobs`)
     const posts = await res.json()
 
     return {

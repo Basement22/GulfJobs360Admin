@@ -9,11 +9,11 @@ import {
 
 import SimpleHeader from "components/Headers/SimpleHeader.js";
 import AddAdminModal from "components/Admins/AddAdminModal";
-import TipsCategoriesTable from "components/TipsCategories/TipsCategoriesTable";
+import PackagesTable from "components/PackagesType/PackagesTable";
 import TableActionBar from "components/Admins/TableActionBar";
-import TipsCategoriesTablePagination from "components/TipsCategories/TipsCategoriesTablePagination";
+import PackagesTablePagination from "components/PackagesType/PackagesTablePagination";
 
-const CategoryTips = (props) => {
+const PackagesType = (props) => {
 
     console.log(props.posts.success)
 
@@ -36,7 +36,7 @@ const CategoryTips = (props) => {
                 <Row>
                     <Col className="mb-5 mb-xl-0" xl="8">
                         <div>
-                            <h1 style={{ display: 'inline-block' }} className="mr-1"> Tips Categories </h1>
+                            <h1 style={{ display: 'inline-block' }} className="mr-1"> Packages Type </h1>
                             <AddAdminModal />
                         </div>
                     </Col>
@@ -47,10 +47,10 @@ const CategoryTips = (props) => {
                     </Col>
 
                     <Col lg="12" md="12" sm="12" xs="12">
-                        <TipsCategoriesTable posts={props.posts.success} />
+                        <PackagesTable posts={props.posts.success} />
                     </Col>
                     <Col lg="12" md="12" sm="12" xs="12" className="align-item-center">
-                        <TipsCategoriesTablePagination postsPerPage={postsPerPage} totalPosts={props.posts.length} paginate={paginate} />
+                        <PackagesTablePagination postsPerPage={postsPerPage} totalPosts={props.posts.length} paginate={paginate} />
                     </Col>
                 </Row>
 
@@ -61,7 +61,7 @@ const CategoryTips = (props) => {
 
 export async function getStaticProps() {
     // You can use any data fetching library
-    const res = await fetch(`${DOMAIN}/tips-categories`)
+    const res = await fetch(`${DOMAIN}/packages-type`)
     const posts = await res.json()
 
     return {
@@ -72,6 +72,6 @@ export async function getStaticProps() {
 }
 
 
-CategoryTips.layout = Admin;
+PackagesType.layout = Admin;
 
-export default CategoryTips; 
+export default PackagesType; 

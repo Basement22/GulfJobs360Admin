@@ -1,3 +1,6 @@
+import axios from 'axios';
+
+import { DOMAIN } from '../../Constants'
 import {
     Table,
     FormGroup,
@@ -9,9 +12,27 @@ import {
 
 
 const FaqsTable = ({ posts }) => {
-    // if (loading) {
-    //     return <h2>Loading...</h2>;
-    // }
+
+    const handleSubmit = async (id) => {
+
+
+        const values = {
+            id: id,
+        }
+        const postId = values.id
+
+        console.log(`By clicking on Delete Icon: ${postId}`)
+
+        if (window.confirm("Are you sure?")) {
+
+            const res = await axios.delete(`${DOMAIN}/tips?id=${id}`)
+            console.log(res.data)
+
+            window.location.reload(true)
+
+        }
+
+    };
 
     return (
         <Table responsive striped className="align-items-center">
@@ -26,10 +47,13 @@ const FaqsTable = ({ posts }) => {
                         Id
                     </th>
                     <th className="sort" data-sort="name" scope="col">
-                        Name
+                        Heading
                     </th>
                     <th className="sort" data-sort="description" scope="col">
                         Description
+                    </th>
+                    <th className="sort" data-sort="description" scope="col">
+                        Name
                     </th>
                     <th className="sort" data-sort="status" scope="col">
                         Status
@@ -52,13 +76,16 @@ const FaqsTable = ({ posts }) => {
                             </div>
                         </td>
                         <td scope="row">
-                            {d.id}
+                            {d.faq_id}
                         </td>
                         <td>
-                            {d.name}
+                            {d.heading}
                         </td>
                         <td>
                             {d.description}
+                        </td>
+                        <td>
+                            {d.name}
                         </td>
                         <td>
                             Active
@@ -67,7 +94,7 @@ const FaqsTable = ({ posts }) => {
                             <Button outline color="primary" size="sm" ><i class="fas fa-pencil-alt"></i></Button>
                         </td>
                         <td>
-                            <Button outline color="danger" size="sm" ><i class="fas fa-trash-alt"></i></Button>
+                            <Button outline color="danger" onClick={() => handleSubmit(d.id)} size="sm" ><i class="fas fa-trash-alt"></i></Button>
                         </td>
                     </tr>
                 ))}

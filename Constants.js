@@ -1,1 +1,1 @@
-export const DOMAIN = 'http://www.gulfjob360.namistech.com'
+export const DOMAIN = 'http://gulfjobs.nwsols.com/api'

@@ -1,4 +1,4 @@
-
+import {DOMAIN} from '../../Constants'
 import Admin from "../../layouts/Admin";
 import {
     Container,
@@ -61,7 +61,7 @@ const FaqsCategories = (props) => {
 
 export async function getStaticProps() {
     // You can use any data fetching library
-    const res = await fetch('http://www.gulfjob360.namistech.com/faq-category')
+    const res = await fetch(`${DOMAIN}/faq-categories`)
     const posts = await res.json()
 
     return {

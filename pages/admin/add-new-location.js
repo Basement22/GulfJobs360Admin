@@ -24,12 +24,14 @@ const InputError = ({ text }) => {
     return <p style={{ color: "red" }}> {text} </p>
 }
 
-const AddJobCategory = () => {
+const AddNewLocation = () => {
 
     const router = useRouter()
     const [values, setValues] = React.useState({
-        name: '',
-        description: ''
+        location_name: '',
+        code: '',
+        slug: '',
+        created_by: '',
     })
 
 
@@ -58,10 +60,10 @@ const AddJobCategory = () => {
         // const data = await res.json();
         // console.log(data)
 
-        const res = await axios.post(`${DOMAIN}/job-categories`, values)
+        const res = await axios.post(`${DOMAIN}/locations`, values)
 
         console.log(res.data)
-        router.push('/admin/jobs')
+        router.push('/admin/location')
     }
 
     return (
@@ -70,6 +72,7 @@ const AddJobCategory = () => {
             <div className=" modal-body p-0">
                 <Card className=" bg-secondary shadow border-0">
                     <CardBody className=" px-lg-5 py-lg-5">
+                        <h1>Add New Location</h1>
                         <Form role="form">
                             <FormGroup className="mb-3">
                                 <InputGroup className="input-group-alternative">
@@ -79,10 +82,10 @@ const AddJobCategory = () => {
                                         </InputGroupText>
                                     </InputGroupAddon>
                                     <Input
-                                        placeholder="Job Category"
+                                        placeholder="Location Name"
                                         type="text"
-                                        name='name'
-                                        value={values.name}
+                                        name='location_name'
+                                        value={values.location_name}
                                         onChange={handleChange}
                                     />
                                 </InputGroup>
@@ -95,20 +98,51 @@ const AddJobCategory = () => {
                                         </InputGroupText>
                                     </InputGroupAddon>
                                     <Input
-                                        placeholder="Job Category Description"
+                                        placeholder="Code"
                                         type="text"
-                                        name='description'
-                                        value={values.description}
+                                        name='code'
+                                        value={values.code}
+                                        onChange={handleChange}
+                                    />
+                                </InputGroup>
+                            </FormGroup>
+                            <FormGroup className="mb-3">
+                                <InputGroup className="input-group-alternative">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <i className="fas fa-info-circle" />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input
+                                        placeholder="Slug"
+                                        type="text"
+                                        name='slug'
+                                        value={values.slug}
+                                        onChange={handleChange}
+                                    />
+                                </InputGroup>
+                            </FormGroup>
+                            <FormGroup className="mb-3">
+                                <InputGroup className="input-group-alternative">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <i className="fas fa-info-circle" />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input
+                                        placeholder="Created By"
+                                        type="text"
+                                        name='created_by'
+                                        value={values.created_by}
                                         onChange={handleChange}
                                     />
                                 </InputGroup>
                             </FormGroup>
                             <div className="text-center" style={{ margin: '20px 0px' }} >
-
                                 <Button className="btn btn-primary btn-lg btn-block" color="primary" type="button"
                                     onClick={handleSubmit}
                                 >
-                                    Add Job Category
+                                    Add New Location
                                 </Button>
                             </div>
                         </Form>
@@ -119,6 +153,6 @@ const AddJobCategory = () => {
     )
 }
 
-AddJobCategory.layout = Admin;
+AddNewLocation.layout = Admin;
 
-export default AddJobCategory; 
+export default AddNewLocation; 

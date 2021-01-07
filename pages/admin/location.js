@@ -1,3 +1,4 @@
+import {DOMAIN} from '../../Constants'
 import Admin from "../../layouts/Admin";
 import {
     Container,
@@ -61,7 +62,7 @@ export async function getStaticProps() {
     // const [loading, setLoading] = React.useState(false);
     // setLoading(true);
     // You can use any data fetching library
-    const res = await fetch('http://www.gulfjob360.namistech.com/api/locations')
+    const res = await fetch(`${DOMAIN}/locations`)
     const posts = await res.json()
     // setLoading(false);
 

@@ -9,9 +9,11 @@ import {
 
 import SimpleHeader from "components/Headers/SimpleHeader.js";
 import AddJobModal from "components/Jobs/AddJobModal";
+import EditJobModal from "components/Jobs/EditJobModal";
 import JobsTable from "components/Jobs/JobsTable";
 import TableActionBar from "components/Jobs/TableActionBar";
 import JobsTablePagination from "components/Jobs/JobsTablePagination";
+import { DOMAIN } from "../../Constants";
 
 const Jobs = (props) => {
 
@@ -41,6 +43,14 @@ const Jobs = (props) => {
                         </div>
                     </Col>
                 </Row>
+                {/* <Row>
+                    <Col className="mb-5 mb-xl-0" xl="8">
+                        <div>
+                            <h1 style={{ display: 'inline-block' }} className="mr-1"> Edit Jobs Categories </h1>
+                            <EditJobModal />
+                        </div>
+                    </Col>
+                </Row> */}
                 <Row>
                     <Col lg="12" md="12" sm="12" xs="12">
                         <TableActionBar />
@@ -61,7 +71,7 @@ const Jobs = (props) => {
 
 export async function getStaticProps() {
     // You can use any data fetching library
-    const res = await fetch('http://www.gulfjob360.namistech.com/api/jobcategory')
+    const res = await fetch(`${DOMAIN}/job-categories`)
     const posts = await res.json()
 
     return {

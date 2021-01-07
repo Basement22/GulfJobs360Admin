@@ -1,4 +1,4 @@
-
+import {DOMAIN} from '../../Constants'
 import Admin from "../../layouts/Admin";
 import {
     Container,
@@ -61,7 +61,7 @@ const Tips = (props) => {
 
 export async function getStaticProps() {
     // You can use any data fetching library
-    const res = await fetch('http://www.gulfjob360.namistech.com/tips')
+    const res = await fetch(`${DOMAIN}/tips`)
     const posts = await res.json()
 
     return {

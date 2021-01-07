@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {DOMAIN} from '../../Constants'
+import { DOMAIN } from "../../Constants"
 import {
     Table,
     FormGroup,
@@ -11,7 +11,7 @@ import {
 
 
 
-const TipsTable = ({ posts }) => {
+const AdminTable = ({ posts }) => {
 
     const handleSubmit = async (id) => {
 
@@ -25,7 +25,7 @@ const TipsTable = ({ posts }) => {
 
         if (window.confirm("Are you sure?")) {
 
-            const res = await axios.delete(`${DOMAIN}/tips?id=${id}`)
+            const res = await axios.delete(`${DOMAIN}/packages-type?id=${id}`)
             console.log(res.data)
             
             window.location.reload(true)
@@ -46,18 +46,18 @@ const TipsTable = ({ posts }) => {
                     <th className="sort" data-sort="id" scope="col">
                         Id
                     </th>
-                    <th className="sort" data-sort="name" scope="col">
-                        Heading
+                    <th className="sort" data-sort="locationName" scope="col">
+                        Name
                     </th>
-                    <th className="sort" data-sort="description" scope="col">
+                    <th className="sort" data-sort="code" scope="col">
                         Description
                     </th>
-                    <th className="sort" data-sort="status" scope="col">
+                    <th className="sort" data-sort="createdBy" scope="col">
+                        Created_By
+                    </th>
+                    {/* <th className="sort" data-sort="status" scope="col">
                         Status
-                    </th>
-                    <th className="sort" data-sort="completed" scope="col">
-
-                    </th>
+                    </th> */}
                     <th className="sort" data-sort="completed" scope="col">
 
                     </th>
@@ -67,22 +67,22 @@ const TipsTable = ({ posts }) => {
 
                 {posts.map(d => (
                     <tr key={d.id}>
-                        <td className="sort" data-sort="id" scope="col">
+                        <th className="sort" data-sort="id" scope="col">
                             <div className=" custom-control custom-checkbox mb-2">
                                 <Input type="checkbox" />
                             </div>
-                        </td>
-                        <td scope="row">
+                        </th>
+                        <th scope="row">
                             {d.id}
-                        </td>
+                        </th>
                         <td>
-                            {d.heading}
+                            {d.name}
                         </td>
                         <td>
                             {d.description}
                         </td>
                         <td>
-                            Active
+                            {d.created_by}
                         </td>
                         <td>
                             <Button outline color="primary" size="sm" ><i class="fas fa-pencil-alt"></i></Button>
@@ -98,4 +98,4 @@ const TipsTable = ({ posts }) => {
     )
 }
 
-export default TipsTable; 
+export default AdminTable; 

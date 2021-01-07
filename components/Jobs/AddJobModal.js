@@ -28,8 +28,8 @@ const AddAdminModal = (props) => {
 
     const router = useRouter()
     const [values, setValues] = React.useState({
-        jobcategory: '',
-        jobcategorydescription: ''
+        name: '',
+        description: ''
     })
 
 
@@ -178,8 +178,8 @@ const AddAdminModal = (props) => {
                                         <Input
                                             placeholder="Job Category"
                                             type="text"
-                                            name='jobcategory'
-                                            value={values.jobcategory}
+                                            name='name'
+                                            value={values.name}
                                             onChange={handleChange}
                                         />
                                     </InputGroup>
@@ -194,8 +194,8 @@ const AddAdminModal = (props) => {
                                         <Input
                                             placeholder="Job Category Description"
                                             type="text"
-                                            name='jobcategorydescription'
-                                            value={values.jobcategorydescription}
+                                            name='description'
+                                            value={values.description}
                                             onChange={handleChange}
                                         />
                                     </InputGroup>

@@ -24,12 +24,13 @@ const InputError = ({ text }) => {
     return <p style={{ color: "red" }}> {text} </p>
 }
 
-const AddJobCategory = () => {
+const AddNewTips = () => {
 
     const router = useRouter()
     const [values, setValues] = React.useState({
-        name: '',
-        description: ''
+        heading: '',
+        description: '',
+        created_by: ''
     })
 
 
@@ -58,10 +59,10 @@ const AddJobCategory = () => {
         // const data = await res.json();
         // console.log(data)
 
-        const res = await axios.post(`${DOMAIN}/job-categories`, values)
+        const res = await axios.post(`${DOMAIN}/tips`, values)
 
         console.log(res.data)
-        router.push('/admin/jobs')
+        router.push('/admin/tips')
     }
 
     return (
@@ -79,10 +80,10 @@ const AddJobCategory = () => {
                                         </InputGroupText>
                                     </InputGroupAddon>
                                     <Input
-                                        placeholder="Job Category"
+                                        placeholder="Tip Heading"
                                         type="text"
-                                        name='name'
-                                        value={values.name}
+                                        name='heading'
+                                        value={values.heading}
                                         onChange={handleChange}
                                     />
                                 </InputGroup>
@@ -95,7 +96,7 @@ const AddJobCategory = () => {
                                         </InputGroupText>
                                     </InputGroupAddon>
                                     <Input
-                                        placeholder="Job Category Description"
+                                        placeholder="Tip Description"
                                         type="text"
                                         name='description'
                                         value={values.description}
@@ -103,12 +104,27 @@ const AddJobCategory = () => {
                                     />
                                 </InputGroup>
                             </FormGroup>
+                            <FormGroup className="mb-3">
+                                <InputGroup className="input-group-alternative">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <i className="fas fa-info-circle" />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input
+                                        placeholder="Created By"
+                                        type="text"
+                                        name='created_by'
+                                        value={values.created_by}
+                                        onChange={handleChange}
+                                    />
+                                </InputGroup>
+                            </FormGroup>
                             <div className="text-center" style={{ margin: '20px 0px' }} >
-
                                 <Button className="btn btn-primary btn-lg btn-block" color="primary" type="button"
                                     onClick={handleSubmit}
                                 >
-                                    Add Job Category
+                                    Add New Tips
                                 </Button>
                             </div>
                         </Form>
@@ -119,6 +135,6 @@ const AddJobCategory = () => {
     )
 }
 
-AddJobCategory.layout = Admin;
+AddNewTips.layout = Admin;
 
-export default AddJobCategory; 
+export default AddNewTips; 

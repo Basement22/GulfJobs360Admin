@@ -24,12 +24,13 @@ const InputError = ({ text }) => {
     return <p style={{ color: "red" }}> {text} </p>
 }
 
-const AddJobCategory = () => {
+const CreateTipsCategories = () => {
 
     const router = useRouter()
     const [values, setValues] = React.useState({
         name: '',
-        description: ''
+        description: '',
+        created_by: ''
     })
 
 
@@ -43,25 +44,10 @@ const AddJobCategory = () => {
     }
 
     const handleSubmit = async () => {
-        // const body = JSON.stringify(values)
-
-        // const res = await fetch('http://www.gulfjob360.namistech.com/api/add-jobcategory' , {
-        //   body ,
-        //   method : 'POST',
-        //   headers : { 
-        //     'content-type' : 'application/json',
-        //     // "Access-Control-Allow-Origin" : true 
-        //   }
-
-        // })
-
-        // const data = await res.json();
-        // console.log(data)
-
-        const res = await axios.post(`${DOMAIN}/job-categories`, values)
+        const res = await axios.post(`${DOMAIN}/tips-categories`, values)
 
         console.log(res.data)
-        router.push('/admin/jobs')
+        router.push('/admin/categorytips')
     }
 
     return (
@@ -79,7 +65,7 @@ const AddJobCategory = () => {
                                         </InputGroupText>
                                     </InputGroupAddon>
                                     <Input
-                                        placeholder="Job Category"
+                                        placeholder="Name"
                                         type="text"
                                         name='name'
                                         value={values.name}
@@ -95,7 +81,7 @@ const AddJobCategory = () => {
                                         </InputGroupText>
                                     </InputGroupAddon>
                                     <Input
-                                        placeholder="Job Category Description"
+                                        placeholder="Description"
                                         type="text"
                                         name='description'
                                         value={values.description}
@@ -103,12 +89,27 @@ const AddJobCategory = () => {
                                     />
                                 </InputGroup>
                             </FormGroup>
+                            <FormGroup className="mb-3">
+                                <InputGroup className="input-group-alternative">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <i className="fas fa-info-circle" />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input
+                                        placeholder="Created By"
+                                        type="text"
+                                        name='created_by'
+                                        value={values.created_by}
+                                        onChange={handleChange}
+                                    />
+                                </InputGroup>
+                            </FormGroup>
                             <div className="text-center" style={{ margin: '20px 0px' }} >
-
                                 <Button className="btn btn-primary btn-lg btn-block" color="primary" type="button"
                                     onClick={handleSubmit}
                                 >
-                                    Add Job Category
+                                    Add Tips Category
                                 </Button>
                             </div>
                         </Form>
@@ -119,6 +120,6 @@ const AddJobCategory = () => {
     )
 }
 
-AddJobCategory.layout = Admin;
+CreateTipsCategories.layout = Admin;
 
-export default AddJobCategory; 
+export default CreateTipsCategories; 
