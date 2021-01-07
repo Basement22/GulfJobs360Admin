@@ -207,10 +207,10 @@ const AddJobCategory = () => {
                                         </InputGroupText>
                                     </InputGroupAddon>
                                     <Input
-                                        placeholder="Industry Area"
+                                        placeholder="Industry Type"
                                         type="text"
-                                        name='industry_area'
-                                        value={values.industry_area}
+                                        name='industry_type'
+                                        value={values.industry_type}
                                         onChange={handleChange}
                                     />
                                 </InputGroup>
@@ -271,7 +271,7 @@ const AddJobCategory = () => {
                                         </InputGroupText>
                                     </InputGroupAddon>
                                     <Input
-                                        placeholder="Experience From"
+                                        placeholder="Experience To"
                                         type="text"
                                         name='experince_to'
                                         value={values.experince_to}

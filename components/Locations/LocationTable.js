@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import EditLocationsModal from './EditLocationsModal'
 import { DOMAIN } from "../../Constants"
 import {
     Table,
@@ -88,7 +88,7 @@ const AdminTable = ({ posts }) => {
                             Yes
                         </td>
                         <td>
-                            <Button outline color="primary" size="sm" ><i class="fas fa-pencil-alt"></i></Button>
+                            <EditLocationsModal />
                         </td>
                         <td>
                             <Button outline color="danger" onClick={() => handleSubmit(d.id)} size="sm" ><i class="fas fa-trash-alt"></i></Button>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import EditPackagesModal from './EditPackagesModal'
 import { DOMAIN } from "../../Constants"
 import {
     Table,
@@ -85,7 +85,7 @@ const AdminTable = ({ posts }) => {
                             {d.created_by}
                         </td>
                         <td>
-                            <Button outline color="primary" size="sm" ><i class="fas fa-pencil-alt"></i></Button>
+                            <EditPackagesModal />
                         </td>
                         <td>
                             <Button outline color="danger" onClick={() => handleSubmit(d.id)} size="sm" ><i class="fas fa-trash-alt"></i></Button>

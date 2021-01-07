@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { DOMAIN } from "../../Constants"
-import EditButton from "../Jobs/EditButton"
+import EditJobModal from "./EditJobModal"
 
 import {
     Table,
@@ -206,7 +206,7 @@ const JobsTable = ({ posts }) => {
                             {d.created_by}
                         </td>
                         <td>
-                            <EditButton />
+                            <EditJobModal />
                         </td>
                         <td>
                             <Button outline color="danger" size="sm" onClick={() => handleSubmit(d.job_id)} ><i class="fas fa-trash-alt"></i></Button>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import EditFaqsModal from './EditFaqsModal'
 import { DOMAIN } from '../../Constants'
 import {
     Table,
@@ -91,7 +91,7 @@ const FaqsTable = ({ posts }) => {
                             Active
                         </td>
                         <td>
-                            <Button outline color="primary" size="sm" ><i class="fas fa-pencil-alt"></i></Button>
+                            <EditFaqsModal />
                         </td>
                         <td>
                             <Button outline color="danger" onClick={() => handleSubmit(d.id)} size="sm" ><i class="fas fa-trash-alt"></i></Button>
